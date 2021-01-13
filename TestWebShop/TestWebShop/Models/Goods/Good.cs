@@ -8,8 +8,8 @@ namespace TestWebShop.Models.Goods
 {
     public class Good
     {
-        public Producer producer { get; set; }
-        public GoodType goodType { get; set; }
+        public Producer Producer { get; set; }
+        public GoodType GoodType { get; set; }
         public string Name { get; set; }
         public double Value { get; set; }
         public string Articul { get; set; }

@@ -8,11 +8,19 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Xml.Serialization;
 using TestWebShop.Models.Goods;
+using TestWebShop.Servises;
 
 namespace TestWebShop.Controllers
 {
     public class ShopController : Controller
     {
+        private readonly IXmlDeserialize _xmlDeserialize;
+
+        public ShopController(IXmlDeserialize xmlDeserialize)
+        {
+            _xmlDeserialize = xmlDeserialize;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -22,8 +30,9 @@ namespace TestWebShop.Controllers
         [HttpPost]
         public IActionResult Upload(IFormFile file)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Good));
-            var goods = ((Good)serializer.Deserialize(file.OpenReadStream()));
+            //XmlSerializer serializer = new XmlSerializer(typeof(Goods));
+            //var goods = (Goods)serializer.Deserialize(file.OpenReadStream());
+            var goods = _xmlDeserialize.GetGoods(file);
             return View();
         }
     }

@@ -7,8 +7,8 @@ using TestWebShop.Models.Goods;
 
 namespace TestWebShop.Servises
 {
-    public interface IXmlSerialize
+    public interface IXmlDeserialize
     {
-        Good GetGoods(IFormFile file);
+        Goods GetGoods(IFormFile file);
     }
 }
