@@ -30,10 +30,16 @@ namespace TestWebShop.Controllers
         [HttpPost]
         public IActionResult Upload(IFormFile file)
         {
-            //XmlSerializer serializer = new XmlSerializer(typeof(Goods));
-            //var goods = (Goods)serializer.Deserialize(file.OpenReadStream());
-            var goods = _xmlDeserialize.GetGoods(file);
-            return View();
+            try
+            {
+                var goods = _xmlDeserialize.GetGoods(file);
+                // await Manager(goods)
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
