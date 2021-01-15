@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TestWebShop.Converters;
+using TestWebShop.Data.DbContext;
+using TestWebShop.Data.Repositories;
+using TestWebShop.Managers;
 using TestWebShop.Servises;
 
 namespace TestWebShop
@@ -26,6 +30,14 @@ namespace TestWebShop
         {
             services.AddControllersWithViews();
             services.AddScoped<IXmlDeserialize, XmlDeserialize>();
+            services.AddScoped<IContextFactory, ContextFactory>();
+            services.AddScoped<IGoodRepository, GoodRepository>();
+            services.AddScoped<IGoodTypeRepository, GoodTypeRepository>();
+            services.AddScoped<IProducerRepository, ProducerRepository>();
+            services.AddScoped<IGoodConverter, GoodConverter>();
+            services.AddScoped<IGoodTypeConverter, GoodTypeConverter>();
+            services.AddScoped<IProducerConverter, ProducerConverter>();
+            services.AddScoped<IGoodManager, GoodManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

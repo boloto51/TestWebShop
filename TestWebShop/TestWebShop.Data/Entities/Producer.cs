@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,13 +7,14 @@ namespace TestWebShop.Data.Entities
     [Table("producer")]
     public class Producer
     {
-        [Column("Id")]
+        //[Column("Id")]
+        //[Key]
+        //public int Id { get; set; }
+        [Column("Code")]
         [Key]
-        public string Id { get; set; }
+        public string Code { get; set; }
         [Column("Name")]
         public string Name { get; set; }
-        [Column("Code")]
-        public string Code { get; set; }
 
         public virtual ICollection<Good> Goods { get; set; }
     }

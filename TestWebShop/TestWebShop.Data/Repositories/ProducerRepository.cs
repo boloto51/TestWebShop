@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestWebShop.Data.DbContext;
@@ -18,48 +16,19 @@ namespace TestWebShop.Data.Repositories
             _context = context;
         }
 
-        public async Task Add(Producer producer)
+        public async Task AddNotExists(List<Producer> producers)
         {
             var context = _context.GetContext();
-            context.Producers.Add(producer);
-            await context.SaveChangesAsync();
-        }
 
+            foreach (var item in producers)
+            {
+                if (context.Producers.Where(p => p.Code == item.Code).FirstOrDefaultAsync() == null)
+                {
+                    context.Producers.Add(item);
+                }                
+            }
 
-        public async Task AddRange(List<Producer> producer)
-        {
-            var context = _context.GetContext();
-            context.Producers.AddRange(producer);
             await context.SaveChangesAsync();
-        }
-
-        public async Task Update(Producer producer)
-        {
-            var context = _context.GetContext();
-            context.Producers.Update(producer);
-            await context.SaveChangesAsync();
-        }
-
-        public async Task UpdateRange(List<Producer> producer)
-        {
-            var context = _context.GetContext();
-            context.Producers.UpdateRange(producer);
-            await context.SaveChangesAsync();
-        }
-
-        public async Task Remove(string Id)
-        {
-            var context = _context.GetContext();
-            var toDelete = await context.Producers.FirstOrDefaultAsync(p => p.Id == Id);
-            context.Producers.Remove(toDelete);
-            await context.SaveChangesAsync();
-        }
-
-        public async Task RemoveRange(List<Producer> producer)
-        {
-            var context = _context.GetContext();
-            context.Producers.RemoveRange(producer);
-            await context.SaveChangesAsync();
-        }
+        }        
     }
 }

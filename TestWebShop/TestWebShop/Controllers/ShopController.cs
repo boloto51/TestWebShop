@@ -9,16 +9,19 @@ using System.IO;
 using System.Xml.Serialization;
 using TestWebShop.Models.Goods;
 using TestWebShop.Servises;
+using TestWebShop.Managers;
 
 namespace TestWebShop.Controllers
 {
     public class ShopController : Controller
     {
         private readonly IXmlDeserialize _xmlDeserialize;
+        private IGoodManager _goodManager;
 
-        public ShopController(IXmlDeserialize xmlDeserialize)
+        public ShopController(IXmlDeserialize xmlDeserialize, IGoodManager goodManager)
         {
             _xmlDeserialize = xmlDeserialize;
+            _goodManager = goodManager;
         }
 
         [HttpGet]
@@ -28,17 +31,17 @@ namespace TestWebShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Upload(IFormFile file)
+        public async Task<IActionResult> Upload(IFormFile file)
         {
             try
             {
                 var goods = _xmlDeserialize.GetGoods(file);
-                // await Manager(goods)
+                await _goodManager.AddRecordsToTable(goods);
                 return View();
             }
-            catch
+            catch //(Exception e)
             {
-                return View();
+                throw new Exception();
             }
         }
     }

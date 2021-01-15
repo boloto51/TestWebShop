@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TestWebShop.Data.Entities
@@ -11,7 +8,7 @@ namespace TestWebShop.Data.Entities
     {
         [Column("Id")]
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Column("Name")]
         public string Name { get; set; }
         [Column("Value")]
@@ -20,6 +17,11 @@ namespace TestWebShop.Data.Entities
         public string Articul { get; set; }
         [Column("Currency")]
         public string Currency { get; set; }
+
+        [Column("GoodTypeCode")]
+        public string GoodTypeCode { get; set; }
+        [Column("ProducerCode")]
+        public string ProducerCode { get; set; }
 
         public virtual GoodType GoodTypes { get; set; }
         public virtual Producer Producers { get; set; }
