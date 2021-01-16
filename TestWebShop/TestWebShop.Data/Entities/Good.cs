@@ -23,7 +23,9 @@ namespace TestWebShop.Data.Entities
         [Column("ProducerCode")]
         public string ProducerCode { get; set; }
 
+        [ForeignKey(nameof(GoodTypeCode))]
         public virtual GoodType GoodTypes { get; set; }
+        [ForeignKey(nameof(ProducerCode))]
         public virtual Producer Producers { get; set; }
     }
 }

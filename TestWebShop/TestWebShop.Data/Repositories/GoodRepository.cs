@@ -24,12 +24,11 @@ namespace TestWebShop.Data.Repositories
             {
                 // уникальный ли артикул и имя?
                 // только добавлять в базу, или обновлять тоже?
-                if (context.Goods.Where(g => g.Articul == item.Articul).FirstOrDefaultAsync() == null
-                    &&
-                    context.Goods.Where(g => g.Name == item.Name).FirstOrDefaultAsync() == null)
-                {
+                //if (await context.Goods.FirstOrDefaultAsync(g => g.Articul == item.Articul &&
+                //g.Name == item.Name) == null)
+                //{
                     context.Goods.Add(item);
-                }
+                //}
             }
 
             await context.SaveChangesAsync();
