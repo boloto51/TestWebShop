@@ -16,20 +16,5 @@ namespace TestWebShop.Data.Repositories
         {
             _context = context;
         }
-
-        public async Task<List<Good>> GetGoods()
-        {
-            return await _context.GetContext().Goods.ToListAsync();
-        }
-
-        public async Task<List<GoodType>> GetGoodTypes()
-        {
-            return await _context.GetContext().GoodTypes.ToListAsync();
-        }
-
-        public async Task<List<Producer>> GetProducers()
-        {
-            return await _context.GetContext().Producers.ToListAsync();
-        }
     }
 }

@@ -7,5 +7,6 @@ namespace TestWebShop.Data.Repositories
     public interface IProducerRepository
     {
         Task AddNotExists(List<Producer> producers);
+        Task<List<Producer>> GetProducers();
     }
 }

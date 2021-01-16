@@ -29,6 +29,11 @@ namespace TestWebShop.Data.Repositories
             }
 
             await context.SaveChangesAsync();
-        }        
+        }
+
+        public async Task<List<Producer>> GetProducers()
+        {
+            return await _context.GetContext().Producers.ToListAsync();
+        }
     }
 }

@@ -31,5 +31,10 @@ namespace TestWebShop.Data.Repositories
 
             await context.SaveChangesAsync();
         }
+
+        public async Task<List<Good>> GetGoods()
+        {
+            return await _context.GetContext().Goods.ToListAsync();
+        }
     }
 }

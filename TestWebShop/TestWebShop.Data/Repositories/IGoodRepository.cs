@@ -7,5 +7,6 @@ namespace TestWebShop.Data.Repositories
     public interface IGoodRepository
     {
         Task AddNotExists(List<Good> goods);
+        Task<List<Good>> GetGoods();
     }
 }

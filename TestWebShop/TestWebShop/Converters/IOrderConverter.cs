@@ -9,7 +9,7 @@ namespace TestWebShop.Converters
 {
     public interface IOrderConverter
     {
-        public List<OrderModel> ToModel(List<Good> goods,
+        public OrderModel ToModel(List<Good> goods,
             List<GoodType> goodTypes, List<Producer> producers);
     }
 }

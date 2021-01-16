@@ -37,7 +37,7 @@ namespace TestWebShop.Controllers
             {
                 var goods = _xmlDeserialize.GetGoods(file);
                 await _goodManager.AddRecordsToTable(goods);
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("CreateOrder", "Order");
             }
             catch (Exception e)
             {

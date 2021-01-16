@@ -1,7 +1,69 @@
-﻿
+﻿@model OrderModel
+
 @{
     ViewData["Title"] = "CreateOrder";
 }
 
-    <h1>Create Order</h1>
+<h1>Create Order</h1>
 
+<div>
+    @Html.DropDownListFor(x => Model.goodType, new SelectList(new[] { "M", "F" }))
+</div>
+
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    <b>Producer</b>
+                </th>
+                <th>
+                    <b>Type</b>
+                </th>
+                <th>
+                    <b>Name</b>
+                </th>
+                <th>
+                    <b>Price</b>
+                </th>
+                <th>
+                    <b>Currency</b>
+                </th>
+                <th>
+                    <b>Number</b>
+                </th>
+                <th>
+                    <b>Total</b>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.goods)
+            {
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(item => item.producers)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+        </table>
+    </div>

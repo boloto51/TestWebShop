@@ -8,8 +8,6 @@ namespace TestWebShop.Data.Repositories
 {
     public interface IOrderRepository
     {
-        Task<List<Good>> GetGoods();
-        Task<List<GoodType>> GetGoodTypes();
-        Task<List<Producer>> GetProducers();
+
     }
 }

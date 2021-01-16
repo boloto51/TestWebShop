@@ -10,21 +10,26 @@ namespace TestWebShop.Controllers
 {
     public class OrderController : Controller
     {
-        private OrderRepository _orderRepository;
-        private OrderConverter _orderConverter;
+        private IGoodRepository _goodRepository;
+        private IGoodTypeRepository _goodTypeRepository;
+        private IProducerRepository _producerRepository;
+        private IOrderConverter _orderConverter;
 
-        public OrderController(OrderRepository orderRepository, OrderConverter orderConverter)
+        public OrderController(IGoodRepository goodRepository, IGoodTypeRepository goodTypeRepository,
+            IProducerRepository producerRepository, IOrderConverter orderConverter)
         {
-            _orderRepository = orderRepository;
+            _goodRepository = goodRepository;
+            _goodTypeRepository = goodTypeRepository;
+            _producerRepository = producerRepository;
             _orderConverter = orderConverter;
         }
 
         [HttpGet]
         public async Task<IActionResult> CreateOrder()
         {
-            var goodsFromDB = await _orderRepository.GetGoods();
-            var goodTypesFromDB = await _orderRepository.GetGoodTypes();
-            var producersFromDB = await _orderRepository.GetProducers();
+            var goodsFromDB = await _goodRepository.GetGoods();
+            var goodTypesFromDB = await _goodTypeRepository.GetGoodTypes();
+            var producersFromDB = await _producerRepository.GetProducers();
             var orderModel = _orderConverter.ToModel(goodsFromDB, goodTypesFromDB, producersFromDB);
             return View(orderModel);
         }

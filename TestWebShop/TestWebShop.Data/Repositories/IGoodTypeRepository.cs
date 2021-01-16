@@ -7,5 +7,6 @@ namespace TestWebShop.Data.Repositories
     public interface IGoodTypeRepository
     {
         Task AddNotExists(List<GoodType> goodTypes);
+        Task<List<GoodType>> GetGoodTypes();
     }
 }

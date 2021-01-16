@@ -29,6 +29,11 @@ namespace TestWebShop.Data.Repositories
             }
 
             await context.SaveChangesAsync();
-        }   
+        }
+
+        public async Task<List<GoodType>> GetGoodTypes()
+        {
+            return await _context.GetContext().GoodTypes.ToListAsync();
+        }
     }
 }
