@@ -22,13 +22,11 @@ namespace TestWebShop.Data.Repositories
 
             foreach (var item in goods)
             {
-                // уникальный ли артикул и имя?
-                // только добавлять в базу, или обновлять тоже?
-                //if (await context.Goods.FirstOrDefaultAsync(g => g.Articul == item.Articul &&
-                //g.Name == item.Name) == null)
-                //{
+                if (await context.Goods.FirstOrDefaultAsync(g => g.Articul == item.Articul &&
+                g.Name == item.Name) == null)
+                {
                     context.Goods.Add(item);
-                //}
+                }
             }
 
             await context.SaveChangesAsync();

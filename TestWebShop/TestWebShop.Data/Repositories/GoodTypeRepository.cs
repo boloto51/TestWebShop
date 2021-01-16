@@ -22,7 +22,7 @@ namespace TestWebShop.Data.Repositories
 
             foreach (var item in goodTypes)
             {
-                if (context.GoodTypes.Where(g => g.Code == item.Code).FirstOrDefaultAsync() == null)
+                if (await context.GoodTypes.Where(g => g.Code == item.Code).FirstOrDefaultAsync() == null)
                 {
                     context.GoodTypes.Add(item);
                 }

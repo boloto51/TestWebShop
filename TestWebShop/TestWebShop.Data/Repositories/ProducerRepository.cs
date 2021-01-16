@@ -22,7 +22,7 @@ namespace TestWebShop.Data.Repositories
 
             foreach (var item in producers)
             {
-                if (context.Producers.Where(p => p.Code == item.Code).FirstOrDefaultAsync() == null)
+                if (await context.Producers.Where(p => p.Code == item.Code).FirstOrDefaultAsync() == null)
                 {
                     context.Producers.Add(item);
                 }                

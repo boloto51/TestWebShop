@@ -37,11 +37,11 @@ namespace TestWebShop.Controllers
             {
                 var goods = _xmlDeserialize.GetGoods(file);
                 await _goodManager.AddRecordsToTable(goods);
-                return View();
+                return RedirectToAction("Index");
             }
-            catch //(Exception e)
+            catch (Exception e)
             {
-                throw new Exception();
+                throw e;
             }
         }
     }
