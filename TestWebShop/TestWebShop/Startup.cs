@@ -40,10 +40,12 @@ namespace TestWebShop
             services.AddScoped<IGoodRepository, GoodRepository>();
             services.AddScoped<IGoodTypeRepository, GoodTypeRepository>();
             services.AddScoped<IProducerRepository, ProducerRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IGoodConverter, GoodConverter>();
             services.AddScoped<IGoodTypeConverter, GoodTypeConverter>();
             services.AddScoped<IProducerConverter, ProducerConverter>();
             services.AddScoped<IGoodManager, GoodManager>();
+            services.AddScoped<IOrderConverter, OrderConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,9 +7,6 @@ namespace TestWebShop.Data.Entities
     [Table("producer")]
     public class Producer
     {
-        //[Column("Id")]
-        //[Key]
-        //public int Id { get; set; }
         [Column("Code")]
         [Key]
         public string Code { get; set; }

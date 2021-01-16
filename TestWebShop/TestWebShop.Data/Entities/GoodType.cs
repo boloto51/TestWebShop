@@ -7,9 +7,6 @@ namespace TestWebShop.Data.Entities
     [Table("goodtype")]
     public class GoodType
     {
-        //[Column("Id")]
-        //[Key]
-        //public int Id { get; set; }
         [Column("Code")]
         [Key]
         public string Code { get; set; }
