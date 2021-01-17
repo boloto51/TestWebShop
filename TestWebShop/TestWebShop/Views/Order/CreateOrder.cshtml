@@ -7,18 +7,16 @@
 <h1>Create Order</h1>
 
 <div>
-    <select class="selectpicker" multiple data-actions-box="true">
-        <option selected>Категории товаров</option>
+    <select class="selectpicker" multiple data-actions-box="true" title="Категории товаров">
         @foreach (var item in Model.goodTypes)
         {
-            <option value=@item.Code>@item.Name</option>
+            <option selected value=@item.Code>@item.Name</option>
         }
     </select>
-    <select class="selectpicker" multiple data-actions-box="true">
-        <option selected>Производители</option>
+    <select class="selectpicker" multiple data-actions-box="true" title="Производители">
         @foreach (var item in Model.producers)
         {
-            <option value=@item.Code>@item.Name</option>
+            <option selected value=@item.Code>@item.Name</option>
         }
     </select>
 </div>
@@ -47,9 +45,7 @@
                 <th>
                     <b>Number</b>
                 </th>
-                <th>
-                    <b>Total</b>
-                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -72,9 +68,12 @@
                         @item.Currency
                     </td>
                     <td>
-                        @*Html.TextBoxFor(item => item.producers)*@
+                        <input class="goodnumber-input goddnumber-input-@item.Id" data-goodid="@item.Id" type="number" value="0" min="0">
                     </td>
-                    <td></td>
+                    <td>
+                        <button hidden class="goodnumber-add goddnumber-add-@item.Id" data-goodid="@item.Id">Add</button>
+                        <button hidden class="goodnumber-delete goddnumber-delete-@item.Id" data-goodid="@item.Id">Delete</button>
+                    </td>
                 </tr>
             }
         </tbody>
