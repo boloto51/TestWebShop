@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="app\scripts\" />
     <Folder Include="Files\" />
   </ItemGroup>
 

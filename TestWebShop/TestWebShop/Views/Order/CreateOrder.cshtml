@@ -7,9 +7,11 @@
 <h1>Create Order</h1>
 
 <div>
-    @Html.DropDownListFor(x => Model.goodTypes, new SelectList(new[] { "M", "F" }))
+    @* @Html.DropDownListFor(x => x.goodTypes, new SelectList(Model.goodTypes)) *@
 </div>
-<div></div>
+<div>
+    <br>
+</div>
 <div>
     <table border="1">
         <thead>
@@ -57,7 +59,7 @@
                         @item.Currency
                     </td>
                     <td>
-                        @Html.TextBoxFor(item => item.producers)
+                        @*Html.TextBoxFor(item => item.producers)*@
                     </td>
                     <td></td>
                 </tr>
