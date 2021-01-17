@@ -6,7 +6,7 @@ namespace TestWebShop.Models
     public class OrderModel
     {
         public List<Good> goods { get; set; }
-        public List<GoodType> goodType { get; set; }
+        public List<GoodType> goodTypes { get; set; }
         public List<Producer> producers { get; set; }
 
         //public int Id { get; set; }

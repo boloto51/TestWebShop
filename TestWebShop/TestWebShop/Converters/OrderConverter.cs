@@ -13,7 +13,7 @@ namespace TestWebShop.Converters
             var orderModel = new OrderModel
             {
                 goods = goods,
-                goodType = goodTypes,
+                goodTypes = goodTypes,
                 producers = producers
             };
 

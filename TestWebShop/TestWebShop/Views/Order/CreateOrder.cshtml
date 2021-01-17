@@ -7,9 +7,9 @@
 <h1>Create Order</h1>
 
 <div>
-    @Html.DropDownListFor(x => Model.goodType, new SelectList(new[] { "M", "F" }))
+    @Html.DropDownListFor(x => Model.goodTypes, new SelectList(new[] { "M", "F" }))
 </div>
-
+<div></div>
 <div>
     <table border="1">
         <thead>
@@ -41,29 +41,27 @@
             @foreach (var item in Model.goods)
             {
                 <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
+                    <td>
+                        @Model.producers.Where(p => p.Code == @item.ProducerCode).Select(p => p.Name).FirstOrDefault()
+                    </td>
+                    <td>
+                        @Model.goodTypes.Where(g => g.Code == @item.GoodTypeCode).Select(g => g.Name).FirstOrDefault()
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Value
+                    </td>
+                    <td>
+                        @item.Currency
+                    </td>
                     <td>
                         @Html.TextBoxFor(item => item.producers)
                     </td>
-                </tr>
-                <tr>
                     <td></td>
                 </tr>
             }
         </tbody>
-        </table>
-    </div>
+    </table>
+</div>
