@@ -1,10 +1,13 @@
-﻿@model OrderModel
+﻿@using JsonSerializer = System.Text.Json.JsonSerializer
+@model OrderModel
 
 @{
     ViewData["Title"] = "CreateOrder";
 }
 
 <h1>Create Order</h1>
+
+<script src="~/js/raw/OrderManager.js"></script>
 
 <div>
     <select class="selectpicker" multiple data-actions-box="true" title="Категории товаров">
@@ -79,3 +82,10 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+            $(function () {
+                new OrderManagerPack.OrderManager(
+                );
+            });
+</script>

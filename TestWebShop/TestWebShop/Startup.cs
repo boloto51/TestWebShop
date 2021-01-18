@@ -72,7 +72,8 @@ namespace TestWebShop
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Shop}/{action=Index}/{id?}");
+                    //pattern: "{controller=Shop}/{action=Index}/{id?}");
+                    pattern: "{controller=Order}/{action=CreateOrder}/{id?}");
             });
         }
     }
