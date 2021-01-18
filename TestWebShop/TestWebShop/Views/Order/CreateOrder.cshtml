@@ -7,8 +7,6 @@
 
 <h1>Create Order</h1>
 
-<script src="~/js/raw/OrderManager.js"></script>
-
 <div>
     <select class="selectpicker" multiple data-actions-box="true" title="Категории товаров">
         @foreach (var item in Model.goodTypes)
@@ -23,6 +21,11 @@
         }
     </select>
 </div>
+
+<div>
+    <button>Оформить заказ</button>
+</div>
+
 <div>
     <br>
 </div>
@@ -64,7 +67,7 @@
                     <td>
                         @item.Name
                     </td>
-                    <td>
+                    <td class="good-price">
                         @item.Value
                     </td>
                     <td>
@@ -74,8 +77,8 @@
                         <input class="goodnumber-input goddnumber-input-@item.Id" data-goodid="@item.Id" type="number" value="0" min="0">
                     </td>
                     <td>
-                        <button hidden class="goodnumber-add goddnumber-add-@item.Id" data-goodid="@item.Id">Add</button>
-                        <button hidden class="goodnumber-delete goddnumber-delete-@item.Id" data-goodid="@item.Id">Delete</button>
+                        <button class="goodnumber-add goddnumber-add-@item.Id" data-goodid="@item.Id" style="display: none;">Add</button>
+                        <button class="goodnumber-delete goddnumber-delete-@item.Id" data-goodid="@item.Id" style="display: none;">Delete</button>
                     </td>
                 </tr>
             }
@@ -83,9 +86,10 @@
     </table>
 </div>
 
+<script src="~/js/OrderManager.js"></script>
 <script type="text/javascript">
-            $(function () {
-                new OrderManagerPack.OrderManager(
-                );
-            });
+    $(function () {
+        new OrderManagerPack.OrderManager(
+        );
+    });
 </script>
