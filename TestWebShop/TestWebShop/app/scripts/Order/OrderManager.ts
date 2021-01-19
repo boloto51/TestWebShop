@@ -1,13 +1,20 @@
 ﻿//import { OrderModel } from "../Models/OrderModel";
 
+import { forEach } from "lodash";
+
 export class OrderManager
 {
     goods: { id: number, count: number, price: number }[] = [];
+    selecgoodtypes: string[] = [];
+    selectproducer: string[] = [];
 
     constructor()
     {
+        $('.selectgoodtype').selectpicker();
         this.initIvents();
     }
+
+    applayFilters() {}
 
     initIvents()
     {
@@ -40,8 +47,6 @@ export class OrderManager
 
             let total = 0;
             this.goods.forEach(item => {
-                //alert(item.count);
-                //alert(item.price);
                 total += item.count * item.price;
             });
 
@@ -65,6 +70,15 @@ export class OrderManager
                 }
                 count += 1;
             });            
+        })
+
+        $(".selectgoodtype").on("changed.bs.select", () => {
+            //const selectedGoodtypes = $(".selectgoodtype option:selected").val();
+            const selectedGoodtypes = $(".selectgoodtype").val();
+            $("tr").hide();
+            //$("tr").removeclass(goodtypeshow)
+            //$("tr").addclass(goodtypeshow)
+            (selectedGoodtypes as string[]).forEach(gt => $(".goodtypecode-" + gt).show());
         })
     }
 }

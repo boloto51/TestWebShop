@@ -8,22 +8,23 @@
 <h1>Create Order</h1>
 
 <div>
-    <select class="selectpicker" multiple data-actions-box="true" title="Категории товаров">
+    <select class="selectpicker selectgoodtype" multiple data-actions-box="true" title="Категории товаров">
         @foreach (var item in Model.goodTypes)
         {
             <option selected value=@item.Code>@item.Name</option>
         }
     </select>
-    <select class="selectpicker" multiple data-actions-box="true" title="Производители">
+    <select class="selectpicker selectproducer" multiple data-actions-box="true" title="Производители">
         @foreach (var item in Model.producers)
         {
             <option selected value=@item.Code>@item.Name</option>
         }
     </select>
+    <button>Оформить заказ</button>
 </div>
 
 <div>
-    <button>Оформить заказ</button>
+
 </div>
 
 <div>
@@ -57,7 +58,7 @@
         <tbody>
             @foreach (var item in Model.goods)
             {
-                <tr>
+                <tr class="goodtypecode-@item.GoodTypeCode producercode-@item.ProducerCode">
                     <td>
                         @Model.producers.Where(p => p.Code == @item.ProducerCode).Select(p => p.Name).FirstOrDefault()
                     </td>
