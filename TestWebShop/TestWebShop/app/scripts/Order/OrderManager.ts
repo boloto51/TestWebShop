@@ -33,16 +33,19 @@ export class OrderManager
             target.hide();
             $(".goodnumber-delete-" + goodId).show();
             goodNumber.attr("disabled", "disabled")
-            this.goods.push({ id: goodId, count: Number(goodNumber.val()), price: Number(goodPrice.text()) });//element.val -> element.text
+            this.goods.push({
+                id: goodId, count: Number(goodNumber.val()),
+                price: Number(goodPrice.text().replace(',', '.'))
+            });//element.val -> element.text
 
             let total = 0;
             this.goods.forEach(item => {
-                alert(item.count);
-                alert(item.price);
+                //alert(item.count);
+                //alert(item.price);
                 total += item.count * item.price;
             });
 
-            //alert(total);
+            alert(total);
         })
 
         $(".goodnumber-delete").on("click", ev => {
