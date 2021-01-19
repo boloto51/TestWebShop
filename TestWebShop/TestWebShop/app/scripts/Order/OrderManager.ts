@@ -9,35 +9,40 @@ export class OrderManager
         this.initIvents();
     }
 
-    initIvents() {
+    initIvents()
+    {
         $(".goodnumber-input").on("input", ev => {
             const target = $(ev.target);
             const goodId = target.data("goodid");
 
             if (Number(target.val()) > 0) {
-                $(".goddnumber-add-" + goodId).show();
+                $(".goodnumber-add-" + goodId).show();
             }
             else {
-                $(".goddnumber-add-" + goodId).hide();
+                $(".goodnumber-add-" + goodId).hide();
             }
         })
 
         $(".goodnumber-add").on("click", ev => {
             const target = $(ev.target);
             const goodId = target.data("goodid");
-            const elem = $(".goddnumber-input-" + goodId);
+            const goodNumber = $(".goodnumber-input-" + goodId);
+            const goodPrice = $(".goodprice-" + goodId);
+            //alert(goodPrice.text());
 
             target.hide();
-            $(".goddnumber-delete-" + goodId).show();
-            elem.attr("disabled", "disabled")
-            this.goods.push({ id: goodId, count: Number(elem.val()), price: 1 });//element.val -> element.text
+            $(".goodnumber-delete-" + goodId).show();
+            goodNumber.attr("disabled", "disabled")
+            this.goods.push({ id: goodId, count: Number(goodNumber.val()), price: Number(goodPrice.text()) });//element.val -> element.text
 
             let total = 0;
             this.goods.forEach(item => {
+                alert(item.count);
+                alert(item.price);
                 total += item.count * item.price;
             });
 
-            alert(total);
+            //alert(total);
         })
 
         $(".goodnumber-delete").on("click", ev => {
@@ -45,9 +50,18 @@ export class OrderManager
             const goodId = target.data("goodid");
 
             target.hide();
-            $(".goddnumber-add-" + goodId).show();
-            $(".goddnumber-input-" + goodId).removeAttr("disabled");
-            $(".goddnumber-input-" + goodId).val(0);
+            //$(".goodnumber-add-" + goodId).show();
+            $(".goodnumber-input-" + goodId).removeAttr("disabled");
+            $(".goodnumber-input-" + goodId).val(0);
+
+            let count = 0;
+            this.goods.forEach(item => {
+                if (Number(item.id) == Number(goodId))
+                {
+                    this.goods.splice(count, 1);
+                }
+                count += 1;
+            });            
         })
     }
 }

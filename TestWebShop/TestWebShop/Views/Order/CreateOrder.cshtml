@@ -67,18 +67,18 @@
                     <td>
                         @item.Name
                     </td>
-                    <td class="good-price">
+                    <td class="goodprice goodprice-@item.Id">
                         @item.Value
                     </td>
                     <td>
                         @item.Currency
                     </td>
                     <td>
-                        <input class="goodnumber-input goddnumber-input-@item.Id" data-goodid="@item.Id" type="number" value="0" min="0">
+                        <input class="goodnumber-input goodnumber-input-@item.Id" data-goodid="@item.Id" type="number" value="0" min="0">
                     </td>
                     <td>
-                        <button class="goodnumber-add goddnumber-add-@item.Id" data-goodid="@item.Id" style="display: none;">Add</button>
-                        <button class="goodnumber-delete goddnumber-delete-@item.Id" data-goodid="@item.Id" style="display: none;">Delete</button>
+                        <button class="goodnumber-add goodnumber-add-@item.Id" data-goodid="@item.Id" style="display: none;">Add</button>
+                        <button class="goodnumber-delete goodnumber-delete-@item.Id" data-goodid="@item.Id" style="display: none;">Delete</button>
                     </td>
                 </tr>
             }
