@@ -72,9 +72,9 @@ export class OrderManager
             });            
         })
 
-        $(".selectgoodtype").on("changed.bs.select", () => {
+        $("#selectgoodtype").on("changed.bs.select", () => {
             //const selectedGoodtypes = $(".selectgoodtype option:selected").val();
-            const selectedGoodtypes = $(".selectgoodtype").val();
+            const selectedGoodtypes = $("#selectgoodtype").val();
             $("tr").hide();
             //$("tr").removeclass(goodtypeshow)
             //$("tr").addclass(goodtypeshow)

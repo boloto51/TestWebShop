@@ -8,13 +8,13 @@
 <h1>Create Order</h1>
 
 <div>
-    <select class="selectpicker selectgoodtype" multiple data-actions-box="true" title="Категории товаров">
+    <select class="selectpicker" id="selectgoodtype" multiple data-actions-box="true" title="Категории товаров">
         @foreach (var item in Model.goodTypes)
         {
             <option selected value=@item.Code>@item.Name</option>
         }
     </select>
-    <select class="selectpicker selectproducer" multiple data-actions-box="true" title="Производители">
+    <select class="selectpicker" id="selectproducer" multiple data-actions-box="true" title="Производители">
         @foreach (var item in Model.producers)
         {
             <option selected value=@item.Code>@item.Name</option>
