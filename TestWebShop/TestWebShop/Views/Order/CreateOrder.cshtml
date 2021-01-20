@@ -58,7 +58,7 @@
         <tbody>
             @foreach (var item in Model.goods)
             {
-                <tr class="goodtypecode-@item.GoodTypeCode producercode-@item.ProducerCode">
+                <tr class="goodtypecode-@item.GoodTypeCode producercode-@item.ProducerCode" data-goodid="@item.Id">
                     <td>
                         @Model.producers.Where(p => p.Code == @item.ProducerCode).Select(p => p.Name).FirstOrDefault()
                     </td>

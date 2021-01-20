@@ -2,22 +2,20 @@
 
 import { forEach } from "lodash";
 
-export class OrderManager
-{
+export class OrderManager {
     goods: { id: number, count: number, price: number }[] = [];
-    selecgoodtypes: string[] = [];
+    selectgoodtypes: string[] = [];
     selectproducer: string[] = [];
 
-    constructor()
-    {
+
+    constructor() {
         $('.selectgoodtype').selectpicker();
         this.initIvents();
     }
 
-    applayFilters() {}
+    applayFilters() { }
 
-    initIvents()
-    {
+    initIvents() {
         $(".goodnumber-input").on("input", ev => {
             const target = $(ev.target);
             const goodId = target.data("goodid");
@@ -64,21 +62,37 @@ export class OrderManager
 
             let count = 0;
             this.goods.forEach(item => {
-                if (Number(item.id) == Number(goodId))
-                {
+                if (Number(item.id) == Number(goodId)) {
                     this.goods.splice(count, 1);
                 }
                 count += 1;
-            });            
+            });
         })
 
         $("#selectgoodtype").on("changed.bs.select", () => {
-            //const selectedGoodtypes = $(".selectgoodtype option:selected").val();
             const selectedGoodtypes = $("#selectgoodtype").val();
             $("tr").hide();
-            //$("tr").removeclass(goodtypeshow)
-            //$("tr").addclass(goodtypeshow)
-            (selectedGoodtypes as string[]).forEach(gt => $(".goodtypecode-" + gt).show());
+            this.selectgoodtypes.splice(0, this.selectgoodtypes.length);
+            (selectedGoodtypes as string[]).forEach(gt => {
+                if (!this.selectproducer.includes($(".goodtypecode-" + gt).data("goodid"))) {
+                $(".goodtypecode-" + gt).show();
+                this.selectgoodtypes.push($(".goodtypecode-" + gt).data("goodid"));
+                }                
+            });
+            alert(this.selectgoodtypes);
+        })
+
+        $("#selectproducer").on("changed.bs.select", () => {
+            const selectedProducers = $("#selectproducer").val();
+            $("tr").hide();
+            this.selectproducer.splice(0, this.selectproducer.length);
+            (selectedProducers as string[]).forEach(pd => {
+                if (!this.selectgoodtypes.includes($(".producercode-" + pd).data("goodid"))) {
+                    $(".producercode-" + pd).show();
+                this.selectproducer.push($(".producercode-" + pd).data("goodid"));
+                }                
+            });
+            alert(this.selectproducer);
         })
     }
 }
