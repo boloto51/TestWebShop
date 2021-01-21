@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TestWebShop.Converters;
 using TestWebShop.Data.Repositories;
+using TestWebShop.Models;
 
 namespace TestWebShop.Controllers
 {
@@ -32,6 +33,12 @@ namespace TestWebShop.Controllers
             var producersFromDB = await _producerRepository.GetProducers();
             var orderModel = _orderConverter.ToModel(goodsFromDB, goodTypesFromDB, producersFromDB);
             return View(orderModel);
+        }
+
+        [HttpPost]
+        public async Task CreateOrder([FromBody]OrderCreateModel orderCreateModel)
+        {
+            var _orderCreateModel = orderCreateModel;
         }
 
         //[HttpPost]

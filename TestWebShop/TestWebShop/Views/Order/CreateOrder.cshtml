@@ -20,16 +20,13 @@
             <option selected value=@item.Code>@item.Name</option>
         }
     </select>
-    <button>Оформить заказ</button>
-</div>
-
-<div>
-
+    <button class="order-create">Оформить заказ</button>
 </div>
 
 <div>
     <br>
 </div>
+
 <div>
     <table border="1">
         <thead>
@@ -90,7 +87,16 @@
 <script src="~/js/OrderManager.js"></script>
 <script type="text/javascript">
     $(function () {
-        new OrderManagerPack.OrderManager(
-        );
-    });
+        new OrderManagerPack.OrderManager('@Url.Action("CreateOrder", "Order")');
+        });
 </script>
+
+@*
+    <script src="~/js/OrderManager.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            new OrderManagerPack.OrderManager(
+            );
+        });
+    </script>
+*@

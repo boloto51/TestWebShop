@@ -1,11 +1,15 @@
-﻿import { forEach } from "lodash";
+﻿import { OrderModel } from "../Models/OrderModel";
+import { forEach } from "lodash";
+import { NetSender } from "../NetSender";
 
 export class OrderManager {
     goods: { id: number, count: number, price: number }[] = [];
     selectgoodtypes: any;
-    selectproducer: string[] = [];
+    selectproducer: any;
+    private orderCreate: string;
 
-    constructor() {
+    constructor(orderCreate: string) {
+        this.orderCreate = orderCreate;
         $('.selectgoodtype').selectpicker();
         this.initIvents();
     }
@@ -89,6 +93,12 @@ export class OrderManager {
         $("#selectproducer").on("changed.bs.select", () => {
             this.selectproducer = $("#selectproducer").val() as string[];
             this.applyFilters();
+        })
+
+        $(".order-create").on("click", () => {
+            NetSender.post(this.orderCreate, {
+                Goods: this.goods
+            }, () => {})
         })
     }
 }
