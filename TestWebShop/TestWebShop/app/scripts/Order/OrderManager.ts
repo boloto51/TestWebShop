@@ -1,19 +1,31 @@
-﻿//import { OrderModel } from "../Models/OrderModel";
-
-import { forEach } from "lodash";
+﻿import { forEach } from "lodash";
 
 export class OrderManager {
     goods: { id: number, count: number, price: number }[] = [];
-    selectgoodtypes: string[] = [];
+    selectgoodtypes: any;
     selectproducer: string[] = [];
-
 
     constructor() {
         $('.selectgoodtype').selectpicker();
         this.initIvents();
     }
 
-    applayFilters() { }
+    applyFilters() {
+        const types = $("#selectgoodtype").val() as any;
+        const prods = $("#selectproducer").val() as any;
+        $("tbody tr").hide();
+        $('tbody tr').each((i, e) => {
+            const t = $(e);
+            const pr = t.data('prod');
+            const tp = t.data('type');
+            if (types.indexOf(tp) !== -1 && prods.indexOf(pr) !== -1) {
+                t.show();
+            }
+            else {
+                t.hide();
+            }
+        });
+    }
 
     initIvents() {
         $(".goodnumber-input").on("input", ev => {
@@ -33,7 +45,6 @@ export class OrderManager {
             const goodId = target.data("goodid");
             const goodNumber = $(".goodnumber-input-" + goodId);
             const goodPrice = $(".goodprice-" + goodId);
-            //alert(goodPrice.text());
 
             target.hide();
             $(".goodnumber-delete-" + goodId).show();
@@ -41,7 +52,7 @@ export class OrderManager {
             this.goods.push({
                 id: goodId, count: Number(goodNumber.val()),
                 price: Number(goodPrice.text().replace(',', '.'))
-            });//element.val -> element.text
+            });
 
             let total = 0;
             this.goods.forEach(item => {
@@ -56,7 +67,6 @@ export class OrderManager {
             const goodId = target.data("goodid");
 
             target.hide();
-            //$(".goodnumber-add-" + goodId).show();
             $(".goodnumber-input-" + goodId).removeAttr("disabled");
             $(".goodnumber-input-" + goodId).val(0);
 
@@ -70,29 +80,15 @@ export class OrderManager {
         })
 
         $("#selectgoodtype").on("changed.bs.select", () => {
-            const selectedGoodtypes = $("#selectgoodtype").val();
-            $("tr").hide();
-            this.selectgoodtypes.splice(0, this.selectgoodtypes.length);
-            (selectedGoodtypes as string[]).forEach(gt => {
-                if (!this.selectproducer.includes($(".goodtypecode-" + gt).data("goodid"))) {
-                $(".goodtypecode-" + gt).show();
-                this.selectgoodtypes.push($(".goodtypecode-" + gt).data("goodid"));
-                }                
-            });
-            alert(this.selectgoodtypes);
+            const temp = $("#selectgoodtype");
+            const types = $("#selectgoodtype").val();
+            this.selectgoodtypes = $("#selectgoodtype").val();
+            this.applyFilters();
         })
 
         $("#selectproducer").on("changed.bs.select", () => {
-            const selectedProducers = $("#selectproducer").val();
-            $("tr").hide();
-            this.selectproducer.splice(0, this.selectproducer.length);
-            (selectedProducers as string[]).forEach(pd => {
-                if (!this.selectgoodtypes.includes($(".producercode-" + pd).data("goodid"))) {
-                    $(".producercode-" + pd).show();
-                this.selectproducer.push($(".producercode-" + pd).data("goodid"));
-                }                
-            });
-            alert(this.selectproducer);
+            this.selectproducer = $("#selectproducer").val() as string[];
+            this.applyFilters();
         })
     }
 }
