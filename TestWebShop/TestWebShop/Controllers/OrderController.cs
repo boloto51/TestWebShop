@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TestWebShop.Converters;
 using TestWebShop.Data.Repositories;
@@ -39,18 +36,7 @@ namespace TestWebShop.Controllers
         public async Task CreateOrder([FromBody]OrderCreateModel orderCreateModel)
         {
             var _orderCreateModel = orderCreateModel;
+            //await _orderManager.AddRecordsToTable(orderCreateModel);
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> BuyOrder()
-        //{
-
-        //}
-
-        //[HttpGet]
-        //public async Task<IActionResult> OrderHistory()
-        //{
-
-        //}
     }
 }

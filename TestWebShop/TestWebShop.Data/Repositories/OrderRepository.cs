@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using TestWebShop.Data.DbContext;
-using TestWebShop.Data.Entities;
+﻿using TestWebShop.Data.DbContext;
 
 namespace TestWebShop.Data.Repositories
 {

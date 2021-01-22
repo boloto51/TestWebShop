@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Web;
 using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Xml.Serialization;
-using TestWebShop.Models.Goods;
 using TestWebShop.Servises;
 using TestWebShop.Managers;
 

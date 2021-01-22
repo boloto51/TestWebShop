@@ -61,14 +61,7 @@ module.exports = function (grunt) {
                     sourceMapRootpath: '../../../../'   // to bubble up from wwwroot/themes/paper/css/site.css
                 },
                 files: {
-                    //'<%= paths.cssOut %>/Monitoring.css': '<%= paths.styles %>/Monitoring.less',
-                    //'<%= paths.cssOut %>/Fonts.css': '<%= paths.styles %>/Fonts.less',
-                    //'<%= paths.cssOut %>/General.css': '<%= paths.styles %>/General.less',
-                    //'<%= paths.cssOut %>/Login.css': '<%= paths.styles %>/Login.less',
-                    //'<%= paths.cssOut %>/Reset.css': '<%= paths.styles %>/Reset.less',
-                    //'<%= paths.cssOut %>/ForgotPassword.css': '<%= paths.styles %>/ForgotPassword.less',
-                    //'<%= paths.cssOut %>/InProgress.css': '<%= paths.styles %>/InProgress.less',
-                    //'<%= paths.cssOut %>/TradeHistory.css': '<%= paths.styles %>/TradeHistory.less',
+                    '<%= paths.cssOut %>/Order.css': '<%= paths.styles %>/Order.less'
                 }
             }
         },

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TestWebShop.Data.DbContext;
 using TestWebShop.Data.Entities;

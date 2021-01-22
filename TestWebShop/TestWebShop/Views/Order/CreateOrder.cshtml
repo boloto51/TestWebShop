@@ -2,10 +2,11 @@
 @model OrderModel
 
 @{
-    ViewData["Title"] = "CreateOrder";
+    <link rel="stylesheet" href="~/css/Order.css" />
+    ViewData["Title"] = "Создание заказа";
 }
 
-<h1>Create Order</h1>
+<h1>Создание заказа</h1>
 
 <div>
     <select class="selectpicker" id="selectgoodtype" multiple data-actions-box="true" title="Категории товаров">
@@ -27,8 +28,8 @@
     <br>
 </div>
 
-<div>
-    <table border="1">
+<div class="order-index-page">
+    <table class="order-table">
         <thead>
             <tr>
                 <th>
@@ -90,13 +91,3 @@
         new OrderManagerPack.OrderManager('@Url.Action("CreateOrder", "Order")');
         });
 </script>
-
-@*
-    <script src="~/js/OrderManager.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            new OrderManagerPack.OrderManager(
-            );
-        });
-    </script>
-*@

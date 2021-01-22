@@ -1,5 +1,4 @@
-﻿import { OrderModel } from "../Models/OrderModel";
-import { forEach } from "lodash";
+﻿import { forEach } from "lodash";
 import { NetSender } from "../NetSender";
 
 export class OrderManager {

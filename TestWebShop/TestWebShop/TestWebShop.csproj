@@ -5,16 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="app\scripts\Models\OrderModel.ts" />
     <None Remove="app\scripts\OrderManager.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TestWebShop.Data\TestWebShop.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Files\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="app\scripts\Models\OrderModel.ts" />
     <TypeScriptCompile Include="app\scripts\Order\OrderManager.ts" />
   </ItemGroup>
 
