@@ -6,11 +6,11 @@ namespace TestWebShop.Data.Entities
 {
     public class Order
     {
-        [Column("OrderGuid", Order = 1)]
+        [Column("OrderGuid", Order = 0)]
         [Key]
         public string OrderGuid { get; set; }
 
-        [Column("GoodId", Order = 0)]
+        [Column("GoodId", Order = 1)]
         [Key]
         public int GoodId { get; set; }
         [Column("GoodCount")]

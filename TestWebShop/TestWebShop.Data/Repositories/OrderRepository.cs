@@ -26,9 +26,9 @@ namespace TestWebShop.Data.Repositories
             }
         }
 
-        //public async Task<List<Order>> GetOrder(string guid)
-        //{
-        //    return await _context.GetContext().Orders.Where(o => o.OrderGuid == guid).ToListAsync();
-        //}
+        public async Task<List<Order>> Get(string guid)
+        {
+            return await _context.GetContext().Orders.Where(o => o.OrderGuid == guid).ToListAsync();
+        }
     }
 }

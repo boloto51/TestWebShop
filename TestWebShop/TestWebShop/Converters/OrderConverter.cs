@@ -39,6 +39,26 @@ namespace TestWebShop.Converters
 
             return orders;
         }
+
+        //public OrderFinishModel ToModel(List<Order> orders)
+        //{
+        //    var orderFinishModel = new List<OrderFinishModel>();
+        //    DateTime date = DateTime.Now;
+
+        //    foreach (var item in orderCreateModel.Goods)
+        //    {
+        //        orders.Add(new Order
+        //        {
+        //            OrderGuid = guid,
+        //            GoodId = item.id,
+        //            GoodCount = item.count,
+        //            GoodPrice = item.price,
+        //            OrderDate = date
+        //        });
+        //    }
+
+        //    return orders;
+        //}
     }
 }
 

@@ -7,5 +7,6 @@ namespace TestWebShop.Data.Repositories
     public interface IOrderRepository
     {
         public Task AddNewOrderToDB(List<Order> orders);
+        public Task<List<Order>> Get(string guid);
     }
 }

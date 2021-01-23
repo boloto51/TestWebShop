@@ -77,13 +77,13 @@ namespace TestWebShop.Data.Migrations
 
             modelBuilder.Entity("TestWebShop.Data.Entities.Order", b =>
                 {
-                    b.Property<int>("GoodId")
-                        .HasColumnType("int")
-                        .HasColumnName("GoodId");
-
                     b.Property<string>("OrderGuid")
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("OrderGuid");
+
+                    b.Property<int>("GoodId")
+                        .HasColumnType("int")
+                        .HasColumnName("GoodId");
 
                     b.Property<int>("GoodCount")
                         .HasColumnType("int")
@@ -97,7 +97,9 @@ namespace TestWebShop.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("OrderDate");
 
-                    b.HasKey("GoodId", "OrderGuid");
+                    b.HasKey("OrderGuid", "GoodId");
+
+                    b.HasIndex("GoodId");
 
                     b.ToTable("Orders");
                 });

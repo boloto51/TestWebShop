@@ -17,7 +17,7 @@ namespace TestWebShop.Data.DbContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Order>().HasKey(a => new { a.GoodId, a.OrderGuid });
+            modelBuilder.Entity<Order>().HasKey(a => new { a.OrderGuid, a.GoodId });
         }
     }
 }

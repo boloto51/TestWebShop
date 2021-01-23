@@ -38,7 +38,7 @@ namespace TestWebShop.Controllers
         }
 
         [HttpPost]
-        public async Task CreateOrder([FromBody]OrderCreateModel orderCreateModel)
+        public async Task<RedirectToActionResult> CreateOrder([FromBody]OrderCreateModel orderCreateModel)
         {
             try
             {
@@ -46,7 +46,8 @@ namespace TestWebShop.Controllers
                 List<Order> orders = _orderConverter.ToModel(orderCreateModel, guid);
                 await _orderRepository.AddNewOrderToDB(orders);
                 //await _orderRepository.Get(guid);
-                RedirectToAction("CheckOrder", "Order", new { orders });
+                return RedirectToAction("CheckOrder", "Order", new { guid });
+                //return RedirectToAction("CheckOrder", "Order", new { orders });
             }
             catch (Exception e)
             {
@@ -54,9 +55,16 @@ namespace TestWebShop.Controllers
             }
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> CheckOrder(List<Order> orders)
+        //{
+        //    return View(orders);
+        //}
+
         [HttpGet]
-        public async Task<IActionResult> CheckOrder(List<Order> orders)
+        public async Task<IActionResult> CheckOrder(string guid)
         {
+            List<Order> orders = await _orderRepository.Get(guid);
             return View(orders);
         }
     }

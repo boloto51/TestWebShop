@@ -19,7 +19,7 @@ namespace TestWebShop.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => new { x.GoodId, x.OrderGuid });
+                    table.PrimaryKey("PK_Orders", x => new { x.OrderGuid, x.GoodId });
                     table.ForeignKey(
                         name: "FK_Orders_good_GoodId",
                         column: x => x.GoodId,
@@ -27,6 +27,11 @@ namespace TestWebShop.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_GoodId",
+                table: "Orders",
+                column: "GoodId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
