@@ -20,10 +20,9 @@ namespace TestWebShop.Converters
             return orderModel;
         }
 
-        public List<Order> ToModel(OrderCreateModel orderCreateModel)
+        public List<Order> ToModel(OrderCreateModel orderCreateModel, string guid)
         {
             var orders = new List<Order>();
-            string guid = Guid.NewGuid().ToString("N");
             DateTime date = DateTime.Now;
 
             foreach (var item in orderCreateModel.Goods)

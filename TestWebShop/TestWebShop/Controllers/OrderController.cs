@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TestWebShop.Converters;
@@ -39,8 +40,24 @@ namespace TestWebShop.Controllers
         [HttpPost]
         public async Task CreateOrder([FromBody]OrderCreateModel orderCreateModel)
         {
-            List<Order> orders = _orderConverter.ToModel(orderCreateModel);
-            await _orderRepository.AddNewOrderToDB(orders);
+            try
+            {
+                string guid = Guid.NewGuid().ToString("N");
+                List<Order> orders = _orderConverter.ToModel(orderCreateModel, guid);
+                await _orderRepository.AddNewOrderToDB(orders);
+                //await _orderRepository.Get(guid);
+                RedirectToAction("CheckOrder", "Order", new { orders });
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CheckOrder(List<Order> orders)
+        {
+            return View(orders);
         }
     }
 }

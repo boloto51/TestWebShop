@@ -8,6 +8,6 @@ namespace TestWebShop.Converters
     {
         public OrderModel ToModel(List<Good> goods,
             List<GoodType> goodTypes, List<Producer> producers);
-        public List<Order> ToModel(OrderCreateModel orderCreateModel);
+        public List<Order> ToModel(OrderCreateModel orderCreateModel, string guid);
     }
 }

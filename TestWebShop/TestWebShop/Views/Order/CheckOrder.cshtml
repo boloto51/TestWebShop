@@ -1,0 +1,43 @@
+﻿@using TestWebShop.Data.Entities
+@model List<Order>
+
+@{
+    ViewData["Title"] = "CheckOrder";
+}
+
+<h1>CheckOrder</h1>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <b>Name</b>
+                </th>
+                <th>
+                    <b>Price</b>
+                </th>
+                <th>
+                    <b>Number</b>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.GoodId
+                    </td>
+                    <td>
+                        @item.GoodPrice
+                    </td>
+                    <td>
+                        @item.GoodCount
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TestWebShop.Data.DbContext;
 using TestWebShop.Data.Entities;
@@ -16,14 +18,17 @@ namespace TestWebShop.Data.Repositories
 
         public async Task AddNewOrderToDB(List<Order> orders)
         {
-            var context = _context.GetContext();
-
-            foreach (var item in orders)
+            if (orders.Count > 0)
             {
-                context.Orders.Add(item);
+                var context = _context.GetContext();
+                context.Orders.AddRange(orders);
+                await context.SaveChangesAsync();
             }
-
-            await context.SaveChangesAsync();
         }
+
+        //public async Task<List<Order>> GetOrder(string guid)
+        //{
+        //    return await _context.GetContext().Orders.Where(o => o.OrderGuid == guid).ToListAsync();
+        //}
     }
 }

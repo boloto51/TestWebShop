@@ -9,9 +9,9 @@ namespace TestWebShop.Test.Context
     {
         public FakeContext()
         {
-            Goods = new FakeDbSet<Good>();
-            GoodTypes = new FakeDbSet<GoodType>();
-            Producers = new FakeDbSet<Producer>();
+            //Goods = new FakeDbSet<Good>();
+            //GoodTypes = new FakeDbSet<GoodType>();
+            //Producers = new FakeDbSet<Producer>();
         }
 
         public void Dispose()

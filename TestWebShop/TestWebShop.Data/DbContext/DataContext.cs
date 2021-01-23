@@ -13,5 +13,11 @@ namespace TestWebShop.Data.DbContext
         public DbSet<GoodType> GoodTypes { get; set; }
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Order> Orders { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Order>().HasKey(a => new { a.GoodId, a.OrderGuid });
+        }
     }
 }
