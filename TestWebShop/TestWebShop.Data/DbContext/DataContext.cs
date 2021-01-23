@@ -12,5 +12,6 @@ namespace TestWebShop.Data.DbContext
         public DbSet<Good> Goods { get; set; }
         public DbSet<GoodType> GoodTypes { get; set; }
         public DbSet<Producer> Producers { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

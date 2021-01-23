@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TestWebShop.Converters;
+using TestWebShop.Data.Entities;
 using TestWebShop.Data.Repositories;
 using TestWebShop.Models;
 
@@ -11,14 +13,16 @@ namespace TestWebShop.Controllers
         private IGoodRepository _goodRepository;
         private IGoodTypeRepository _goodTypeRepository;
         private IProducerRepository _producerRepository;
+        private IOrderRepository _orderRepository;
         private IOrderConverter _orderConverter;
 
         public OrderController(IGoodRepository goodRepository, IGoodTypeRepository goodTypeRepository,
-            IProducerRepository producerRepository, IOrderConverter orderConverter)
+            IOrderRepository orderRepository, IProducerRepository producerRepository, IOrderConverter orderConverter)
         {
             _goodRepository = goodRepository;
             _goodTypeRepository = goodTypeRepository;
             _producerRepository = producerRepository;
+            _orderRepository = orderRepository;
             _orderConverter = orderConverter;
         }
 
@@ -35,8 +39,8 @@ namespace TestWebShop.Controllers
         [HttpPost]
         public async Task CreateOrder([FromBody]OrderCreateModel orderCreateModel)
         {
-            var _orderCreateModel = orderCreateModel;
-            //await _orderManager.AddRecordsToTable(orderCreateModel);
+            List<Order> orders = _orderConverter.ToModel(orderCreateModel);
+            await _orderRepository.AddNewOrderToDB(orders);
         }
     }
 }
